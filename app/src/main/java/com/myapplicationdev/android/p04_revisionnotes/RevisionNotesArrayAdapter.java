@@ -68,7 +68,7 @@ public class RevisionNotesArrayAdapter extends ArrayAdapter<Note> {
         }
 
         //
-        textViewNote.setText("C347 Week " +currentNote.getID() + " - " + currentNote.getNoteContent() );
+        textViewNote.setText("C347 Week " +currentNote.getID() + "  - " + currentNote.getNoteContent() );
         return rowView;
     }
 }
