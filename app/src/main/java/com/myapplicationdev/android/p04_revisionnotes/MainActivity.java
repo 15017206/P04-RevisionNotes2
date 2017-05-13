@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DBHelper db = new DBHelper(MainActivity.this);
-                db.close();
-                db.insertNote(editTextNote.toString(), numStars);
 
+                db.insertNote(editTextNote.getText().toString(), numStars);
+                db.close();
                 Toast.makeText(getApplicationContext(), "Inserted!", Toast.LENGTH_SHORT).show();
             }
         });

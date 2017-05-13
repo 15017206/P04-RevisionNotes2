@@ -7,10 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import static com.myapplicationdev.android.p04_revisionnotes.R.string.stars;
 
 public class RevisionNotesArrayAdapter extends ArrayAdapter<Note> {
 
@@ -43,32 +42,33 @@ public class RevisionNotesArrayAdapter extends ArrayAdapter<Note> {
 
 
         //Match the UI components with Java variables
-        Note CurrentNote = notes.get(position);
+        Note currentNote = notes.get(position);
 
 //        Check if the property for starts >= 5, if so, "light" up the stars
-//        if (stars >= 5) {
-//            iv5.setImageResource(android.R.drawable.btn_star_big_on);
-//            iv4.setImageResource(android.R.drawable.btn_star_big_on);
-//            iv3.setImageResource(android.R.drawable.btn_star_big_on);
-//            iv2.setImageResource(android.R.drawable.btn_star_big_on);
-//            iv1.setImageResource(android.R.drawable.btn_star_big_on);
-//        } else if (stars >= 4) {
-//            iv4.setImageResource(android.R.drawable.btn_star_big_on);
-//            iv3.setImageResource(android.R.drawable.btn_star_big_on);
-//            iv2.setImageResource(android.R.drawable.btn_star_big_on);
-//            iv1.setImageResource(android.R.drawable.btn_star_big_on);
-//        } else if (stars >= 3) {
-//            iv3.setImageResource(android.R.drawable.btn_star_big_on);
-//            iv2.setImageResource(android.R.drawable.btn_star_big_on);
-//            iv1.setImageResource(android.R.drawable.btn_star_big_on);
-//        } else if (stars >= 2) {
-//            iv2.setImageResource(android.R.drawable.btn_star_big_on);
-//            iv1.setImageResource(android.R.drawable.btn_star_big_on);
-//        } else if (stars >= 1) {
-//            iv1.setImageResource(android.R.drawable.btn_star_big_on);
-//
-//
-//        }
+        if (currentNote.getStars() >= 5) {
+            iv5.setImageResource(android.R.drawable.btn_star_big_on);
+            iv4.setImageResource(android.R.drawable.btn_star_big_on);
+            iv3.setImageResource(android.R.drawable.btn_star_big_on);
+            iv2.setImageResource(android.R.drawable.btn_star_big_on);
+            iv1.setImageResource(android.R.drawable.btn_star_big_on);
+        } else if (currentNote.getStars() >= 4) {
+            iv4.setImageResource(android.R.drawable.btn_star_big_on);
+            iv3.setImageResource(android.R.drawable.btn_star_big_on);
+            iv2.setImageResource(android.R.drawable.btn_star_big_on);
+            iv1.setImageResource(android.R.drawable.btn_star_big_on);
+        } else if (currentNote.getStars() >= 3) {
+            iv3.setImageResource(android.R.drawable.btn_star_big_on);
+            iv2.setImageResource(android.R.drawable.btn_star_big_on);
+            iv1.setImageResource(android.R.drawable.btn_star_big_on);
+        } else if (currentNote.getStars() >= 2) {
+            iv2.setImageResource(android.R.drawable.btn_star_big_on);
+            iv1.setImageResource(android.R.drawable.btn_star_big_on);
+        } else if (currentNote.getStars() >= 1) {
+            iv1.setImageResource(android.R.drawable.btn_star_big_on);
+        }
+
+        //
+        textViewNote.setText("C347 Week " +currentNote.getID() + " - " + currentNote.getNoteContent() );
         return rowView;
     }
 }

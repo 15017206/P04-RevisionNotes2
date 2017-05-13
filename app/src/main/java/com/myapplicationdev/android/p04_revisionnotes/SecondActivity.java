@@ -20,20 +20,19 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //TODO implement the Custom ListView
-
+        setContentView(R.layout.activity_second);
         lv = (ListView) findViewById(R.id.lv);
         note = new ArrayList<Note>();
         aa = new RevisionNotesArrayAdapter(this, R.layout.row, note);
+        lv.setAdapter(aa);
 
+        Intent j = getIntent();
+        int starRating = j.getIntExtra("starRating", 0);
+        String revisionNote = j.getStringExtra("revisionNote");
 
-//        Intent j = getIntent();
-//        int starRating = j.getIntExtra("starRating",0);
-//        String revisionNote = j.getStringExtra("revisionNote");
+        Toast.makeText(getApplicationContext(), "Star Rating: " + starRating + " RevisionNote: " + revisionNote, Toast.LENGTH_SHORT).show();
 
-//        Toast.makeText(getApplicationContext(), "Star Rating: "+ starRating + " RevisionNote: " + revisionNote , Toast.LENGTH_SHORT).show();
-
-        // Create the DBHelper object, passing in the
-        // activity's Context
+        // Create the DBHelper object, passing in the activity's Context
         DBHelper db = new DBHelper(SecondActivity.this);
 
         // Insert a task
@@ -42,16 +41,10 @@ public class SecondActivity extends AppCompatActivity {
         db.close();
 
         String txt = "";
-//        for (int i = 0; i < data.size(); i++) {
-//            Log.d("Database Content", i + ". " + data.get(i));
-//            txt += i + ". " + data.get(i) + "\n";
-//            note.add(new Note(data.get(i).getID(), data.get(i).getNoteContent(), data.get(i).getStars()));
-//        }
-
-        lv.setAdapter(aa);
-        aa.notifyDataSetChanged();
-
+        for (int i = 0; i < data.size(); i++) {
+            Log.d("Database Content", i + ". " + data.get(i));
+            txt += i + ". " + data.get(i) + "\n";
+            note.add(new Note(data.get(i).getID(), data.get(i).getNoteContent(), data.get(i).getStars()));
+        }
     }
-
-
 }
